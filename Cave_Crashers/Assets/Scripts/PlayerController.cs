@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 3.0f;
+    [SerializeField] private float gravity = 9.8f;
 
     [Header("Look Sensitivity")]
     [SerializeField] private float lookSensitivity = 2.0f;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalMovement = new Vector3(horizontalSpeed, 0, verticalSpeed);
         horizontalMovement = transform.rotation * horizontalMovement;
 
+        currentMovement.y -= gravity * Time.deltaTime;
         currentMovement.x = horizontalMovement.x;
         currentMovement.z = horizontalMovement.z;
 
