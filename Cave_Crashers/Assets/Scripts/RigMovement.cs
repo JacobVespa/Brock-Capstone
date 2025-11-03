@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RigMovement : MonoBehaviour, IInteractable
 {
+    private GameObject pilotSeat;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,6 +19,7 @@ public class RigMovement : MonoBehaviour, IInteractable
     public void Interact()
     {
         //Set Players Transform to Pilot Seat Transform
+        //How do I have the player exit the station
 
         //UI Transition?
 
