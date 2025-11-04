@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -20,8 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionAsset playerControls;
 
     private bool isMoving;
-    public float verticalRotation;
-    private Vector3 currentMovement = Vector3.zero;
+    private PlayerInput playerInput;
     private CharacterController characterController;
 
     private InputAction moveAction;
@@ -30,18 +31,20 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
 
+    private Vector3 velocity;
+    private float verticalRotation;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        playerInput = GetComponent<PlayerInput>();
 
-        moveAction = playerControls.FindActionMap("Player").FindAction("Move");
-        lookAction = playerControls.FindActionMap("Player").FindAction("Look");
+        var map = playerInput.actions.FindActionMap("Player", throwIfNotFound: true);
+        moveAction = map.FindAction("Move", throwIfNotFound: true);
+        lookAction = map.FindAction("Look", throwIfNotFound: true);
 
-        moveAction.performed += context => moveInput = context.ReadValue<Vector2>();
-        moveAction.canceled += context => moveInput = Vector2.zero;
-
-        lookAction.performed += context => lookInput = context.ReadValue<Vector2>();
-        lookAction.canceled += context => lookInput = Vector2.zero;
+        if (mainCamera == null)
+            mainCamera = GetComponentInChildren<Camera>();
     }
 
     private void OnEnable()
@@ -58,35 +61,40 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        moveInput = moveAction.ReadValue<Vector2>();
+        lookInput = lookAction.ReadValue<Vector2>();
+
         HandleMovement();
         HandleRotation();
     }
 
     private void HandleMovement()
     {
-        float verticalSpeed = moveInput.y * walkSpeed;
-        float horizontalSpeed = moveInput.x * walkSpeed;
+        // Convert input to world space relative to facing
+        Vector3 input = new Vector3(moveInput.x, 0f, moveInput.y);
+        Vector3 planar = transform.TransformDirection(input) * walkSpeed;
 
-        Vector3 horizontalMovement = new Vector3(horizontalSpeed, 0, verticalSpeed);
-        horizontalMovement = transform.rotation * horizontalMovement;
+        // Grounding & gravity
+        if (characterController.isGrounded)
+            velocity.y = -1f; // keep grounded
+        else
+            velocity.y -= gravity * Time.deltaTime;
 
-        currentMovement.y -= gravity * Time.deltaTime;
-        currentMovement.x = horizontalMovement.x;
-        currentMovement.z = horizontalMovement.z;
-
-        characterController.Move(currentMovement * Time.deltaTime);
-
-        isMoving = moveInput.y != 0 || moveInput.x != 0;
+        Vector3 motion = new Vector3(planar.x, velocity.y, planar.z);
+        characterController.Move(motion * Time.deltaTime);
     }
 
     private void HandleRotation()
     {
-        float lookXRotation = lookInput.x * lookSensitivity;
-        transform.Rotate(0, lookXRotation, 0);
+        float yaw = lookInput.x * lookSensitivity;
+        transform.Rotate(0, yaw, 0);
 
-        verticalRotation -= lookInput.y * lookSensitivity;
+        verticalRotation -= lookInput.y * lookSensitivity * Time.deltaTime;
         verticalRotation = Mathf.Clamp(verticalRotation, -verticalRange, verticalRange);
-        mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        if(mainCamera != null)
+        {
+            mainCamera.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
+        }
 
     }
 }

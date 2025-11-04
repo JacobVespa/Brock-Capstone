@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\",
+  "WorkspaceRootPath": "C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|c:\\users\\anthony\\documents\\github\\brock-capstone\\cave_crashers\\assets\\scripts\\interactorscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interactorscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|c:\\year 4\\brock\\capstone\\brock-capstone\\cave_crashers\\assets\\scripts\\localmultiplayerbootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\localmultiplayerbootstrap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\assets\\scripts\\rigmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\rigmovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|c:\\year 4\\brock\\capstone\\brock-capstone\\cave_crashers\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\assets\\scripts\\interactorscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C751E58-A54B-12E0-58E4-C154A36DFFE7}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\interactorscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,44 +22,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RigMovement.cs",
-              "DocumentMoniker": "C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\RigMovement.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\RigMovement.cs",
-              "ToolTip": "C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\RigMovement.cs",
-              "RelativeToolTip": "Assets\\Scripts\\RigMovement.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCMAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T02:38:37.262Z"
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InteractorScript.cs",
-              "DocumentMoniker": "C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\InteractorScript.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\InteractorScript.cs",
-              "ToolTip": "C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\InteractorScript.cs",
-              "RelativeToolTip": "Assets\\Scripts\\InteractorScript.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAIwCYAAAAKAAAAAAAAAA==",
+              "Title": "LocalMultiplayerBootstrap.cs",
+              "DocumentMoniker": "C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\LocalMultiplayerBootstrap.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LocalMultiplayerBootstrap.cs",
+              "ToolTip": "C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\LocalMultiplayerBootstrap.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LocalMultiplayerBootstrap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-03T02:26:48.347Z",
+              "WhenOpened": "2025-11-04T19:09:41.185Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\Anthony\\Documents\\GitHub\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAIwDgAAAAFAAAAAAAAAA==",
+              "Title": "InteractorScript.cs",
+              "DocumentMoniker": "C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\InteractorScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InteractorScript.cs",
+              "ToolTip": "C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\InteractorScript.cs",
+              "RelativeToolTip": "Assets\\Scripts\\InteractorScript.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAQwCQAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-31T18:13:15.045Z"
+              "WhenOpened": "2025-11-03T02:26:48.347Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
+              "ToolTip": "C:\\Year 4\\Brock\\CAPSTONE\\Brock-Capstone\\Cave_Crashers\\Assets\\Scripts\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\PlayerController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAIwFAAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-31T18:13:15.045Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 84,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
