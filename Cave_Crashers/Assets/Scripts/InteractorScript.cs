@@ -13,34 +13,34 @@ public class InteractorScript : MonoBehaviour
     public float InteractRange;
 
     [Header("Input Actions")]
-    [SerializeField] private InputActionAsset playerControls;
+    [SerializeField] private InputActionAsset inputActions;
 
     private InputAction interactAction;
 
-    private void Awake()
-    {
-        interactAction = playerControls.FindActionMap("Player").FindAction("Interact");
-
-        interactAction.performed += OnInteract;
-    }
-
     private void OnEnable()
     {
-        interactAction.Enable();
+        inputActions.FindActionMap("Player").Enable();
     }
 
     private void OnDisable()
     {
-        interactAction.Disable();
+        inputActions.FindActionMap("Player").Disable();
     }
 
-    private void OnInteract(InputAction.CallbackContext context)
+    private void Awake()
     {
-        //Only trigger when button is pressed (not held or released)
-        if (!context.performed) return;
+        interactAction = InputSystem.actions.FindAction("Interact");
+    }
 
-        Debug.Log("Here!");
-
+    private void Update()
+    {
+        if (interactAction.WasPressedThisFrame())
+        {
+            OnInteract();
+        }
+    }
+    private void OnInteract()
+    {
         Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
         {
