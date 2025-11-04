@@ -6,7 +6,10 @@ using System;
 public class RoomManager : MonoBehaviour
 {
 
-    [SerializeField] GameObject prefab;
+    [SerializeField] GameObject chamber;
+    [SerializeField] GameObject tunnel;
+    public GameObject Tunnel => tunnel;
+
     public int roomSpacing = 10;
 
     private Room start;
@@ -29,7 +32,7 @@ public class RoomManager : MonoBehaviour
     public void RoomGeneration()
     {
         allRooms.Clear();
-        start = CreateRoom(prefab, RoomType.Start, Vector3.zero);
+        start = CreateRoom(chamber, RoomType.Start, Vector3.zero);
         allRooms.Add(start);
 
         List<Room> lastLayer = new List<Room>();
@@ -46,7 +49,7 @@ public class RoomManager : MonoBehaviour
             int spaceIndex = 0;
             for (int j = i + 2; j > 0; j--)
             {
-                Room newRoom = CreateRoom(prefab, RoomType.Default, new Vector3((i + 1) * roomSpacing, 0.0f, ((i + 1) * roomSpacing) - (spaceIndex * roomSpacing * 2)));
+                Room newRoom = CreateRoom(chamber, RoomType.Default, new Vector3((i + 1) * roomSpacing, 0.0f, ((i + 1) * roomSpacing) - (spaceIndex * roomSpacing * 2)));
 
                 currentLayer.Add(newRoom);
                 allRooms.Add(newRoom);
@@ -86,7 +89,7 @@ public class RoomManager : MonoBehaviour
             for (int j = i + 1; j > 0; j--) // One fewer room each layer
             {
                 int xPos = (FRONT_LAYER + 1) + layerOffset;
-                Room newRoom = CreateRoom(prefab, RoomType.Default, new Vector3(xPos * roomSpacing, 0.0f, (i * roomSpacing) - (spaceIndex * roomSpacing * 2)));
+                Room newRoom = CreateRoom(chamber, RoomType.Default, new Vector3(xPos * roomSpacing, 0.0f, (i * roomSpacing) - (spaceIndex * roomSpacing * 2)));
 
                 currentLayer.Add(newRoom);
                 allRooms.Add(newRoom);
@@ -120,7 +123,7 @@ public class RoomManager : MonoBehaviour
         }
 
         // Connect to end room
-        end = CreateRoom(prefab, RoomType.End, new Vector3((FRONT_LAYER + 1 + layerOffset) * roomSpacing, 0, 0));
+        end = CreateRoom(chamber, RoomType.End, new Vector3((FRONT_LAYER + 1 + layerOffset) * roomSpacing, 0, 0));
         allRooms.Add(end);
 
         foreach (Room room in lastLayer)

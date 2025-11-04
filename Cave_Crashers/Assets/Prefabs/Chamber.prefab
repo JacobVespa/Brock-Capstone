@@ -407,6 +407,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367e85a08c1d0144fb83b92b767e14e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  northWall: {fileID: 3680726959664898055}
+  southWall: {fileID: 5151979507924144437}
 --- !u!1 &4481916148335989328
 GameObject:
   m_ObjectHideFlags: 0

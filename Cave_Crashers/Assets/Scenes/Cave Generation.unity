@@ -284,7 +284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 329761604ac78d646b8199ed0f1645ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4371246445917278271, guid: a6131589eb7aa9b4cb309f7a48ead500, type: 3}
+  chamber: {fileID: 4371246445917278271, guid: a6131589eb7aa9b4cb309f7a48ead500, type: 3}
+  tunnel: {fileID: 100443408393645160, guid: a49725b5d0101c54f96df6fa6f3fa27f, type: 3}
   roomSpacing: 250
 --- !u!1 &1417354996
 GameObject:
