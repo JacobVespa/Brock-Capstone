@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 public class RigMovement : MonoBehaviour, IInteractable
 {
-    private GameObject player;
-    private GameObject pilotSeat;
-    private GameObject rig;
-    private Rigidbody rigBody;
-    private Transform exitTransform;
+    public GameObject player;
+    public GameObject pilotSeat;
+    public GameObject rig;
+    public Rigidbody rigBody;
+    public Transform exitTransform;
 
     private void Awake()
     {
@@ -32,8 +32,8 @@ public class RigMovement : MonoBehaviour, IInteractable
     public void Interact()
     {
         //Set Players Transform to Pilot Seat Transform
-        //player.transform.position = pilotSeat.transform.position; 
-        Debug.Log("Here");
+        player.transform.position = pilotSeat.transform.position; 
+        //Debug.Log("Here");
 
         //UI Transition?
 
