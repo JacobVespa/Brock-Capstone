@@ -281,12 +281,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 213964182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 329761604ac78d646b8199ed0f1645ab, type: 3}
+  m_Script: {fileID: 11500000, guid: f9eea192591aa9442b2a362787329bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chamber: {fileID: 4371246445917278271, guid: a6131589eb7aa9b4cb309f7a48ead500, type: 3}
-  tunnel: {fileID: 100443408393645160, guid: a49725b5d0101c54f96df6fa6f3fa27f, type: 3}
-  roomSpacing: 250
+  S_Chamber01: {fileID: 494604679844505126, guid: 5deeafc345b23b045bef1cded8a48b8b, type: 3}
+  S_Chamber02: {fileID: 2152643178622890037, guid: b2df3ad99bbf4624a902a29405d24271, type: 3}
+  L_Chamber01: {fileID: 6955787800841978560, guid: c4958035ca68bf240874cc0d3809d5ca, type: 3}
+  L_Chamber02: {fileID: 2979602091165430654, guid: 266c885bdb5731e49950c785c8822c9c, type: 3}
+  Connector01: {fileID: 7599929491216779119, guid: ec7231f809d13844ea5928847a95913e, type: 3}
+  Connector02: {fileID: 5075338991351958022, guid: d4bf4d62e7e72a04a9ee61fbef1ba1a9, type: 3}
+  MAP_SIZE: 10
 --- !u!1 &1417354996
 GameObject:
   m_ObjectHideFlags: 0

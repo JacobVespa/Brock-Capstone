@@ -5,7 +5,7 @@ public class RoomScript : MonoBehaviour
 {
 
     public Room roomData; //Assigned by roomManager when the prefab is created
-    private RoomManager roomManager;
+    private DEPRECATED_RoomManager roomManager;
 
     public Transform northWall;
     private Transform[] tunnelSpawnNorth = new Transform[3];
@@ -18,7 +18,7 @@ public class RoomScript : MonoBehaviour
         tunnelSpawnNorth = GetImmediateChildren(northWall);
         tunnelSpawnSouth = GetImmediateChildren(southWall);
 
-        roomManager = FindAnyObjectByType<RoomManager>(); // Because there is only one roomManager
+        roomManager = FindAnyObjectByType<DEPRECATED_RoomManager>(); // Because there is only one roomManager
         SpawnTunnel();
     }
 
