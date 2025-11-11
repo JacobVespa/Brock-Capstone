@@ -19,9 +19,9 @@ public class RoomManager : MonoBehaviour
     private GameObject[] connectors;
 
     [SerializeField] int MAP_SIZE = 10;
+    [SerializeField] int GLOBAL_RANDOM_PERCENT = 40;
     private const int separationDistance = 200;
     private Random r = new Random();
-    private int roomRotation;
 
     // Rectangular 2D array: rows x cols = MAP_SIZE x MAP_SIZE
     private Chamber[,] Map;
@@ -60,14 +60,14 @@ public class RoomManager : MonoBehaviour
             int x = 0;
             while (x < MAP_SIZE)
             {
-                x += r.Next((int)(MAP_SIZE * 0.1), (int)(MAP_SIZE * 0.4));
+                x += r.Next((int)(MAP_SIZE * 0.2), (int)(MAP_SIZE * 0.4));
 
-                if (CanPlace(x, y)) //error check for out of bounds
+                if (CanPlace(x, y, out int rotation)) //error check for out of bounds
                 {
-                    InitializeRoom(x, y, "Large");
+                    InitializeRoom(x, y, "Large", rotation);
                 }
             }
-            y += r.Next((int)(MAP_SIZE * 0.1), (int)(MAP_SIZE * 0.4));
+            y += r.Next((int)(MAP_SIZE * 0.2), (int)(MAP_SIZE * 0.4));
         }
     }
 
@@ -81,39 +81,45 @@ public class RoomManager : MonoBehaviour
             {
                 x += r.Next((int)(MAP_SIZE * 0.1), (int)(MAP_SIZE * 0.2));
 
-                if (x < MAP_SIZE && Map[x, y] == null)
+                if (x < MAP_SIZE && Map[x, y] == null && !occupied[x, y] && gambling(GLOBAL_RANDOM_PERCENT))
                 {
-                    InitializeRoom(x, y, "Small ");
+                    InitializeRoom(x, y, "Small ", 0);
                 }
             }
             y += r.Next((int)(MAP_SIZE * 0.1), (int)(MAP_SIZE * 0.3));
         }
     }
 
-    private bool CanPlace(int x, int y)
+    private bool CanPlace(int x, int y, out int rotation)
     {
-        try { if (Map[x, y] != null) return false; }
-        catch (IndexOutOfRangeException) { return false; }
+        rotation = 0;
+        if (x < 0 || y < 0 || x >= MAP_SIZE || y >= MAP_SIZE) return false;
+        if (Map[x, y] != null || occupied[x, y]) return false;
 
-            List<int> openSpaces = new List<int>();
+        List<int> openSpaces = new List<int>();
 
-        if (y + 1 < MAP_SIZE && Map[x, y + 1] == null && !occupied[x, y + 1]) openSpaces.Add(0);
-        if (x - 1 >= 0 && Map[x - 1, y] == null && !occupied[x - 1, y]) openSpaces.Add(90);
-        if (y - 1 >= 0 && Map[x, y - 1] == null && !occupied[x, y - 1]) openSpaces.Add(180);
-        if (x + 1 < MAP_SIZE && Map[x + 1, y] == null && !occupied[x + 1, y]) openSpaces.Add(270);
+        if (y - 1 >= 0 && Map[x, y - 1] == null && !occupied[x, y - 1]) openSpaces.Add(0); //180
+        if (x + 1 < MAP_SIZE && Map[x + 1, y] == null && !occupied[x + 1, y]) openSpaces.Add(90); //270
+        if (y + 1 < MAP_SIZE && Map[x, y + 1] == null && !occupied[x, y + 1]) openSpaces.Add(180); //0
+        if (x - 1 >= 0 && Map[x - 1, y] == null && !occupied[x - 1, y]) openSpaces.Add(270); //90
 
-        if (openSpaces.Count > 0)
-        {
-            roomRotation = openSpaces[r.Next(openSpaces.Count)];
-            return true;
-        }
-        else
-            return false;
+        if (openSpaces.Count == 0) return false;
+
+        rotation = openSpaces[r.Next(openSpaces.Count)];
+        Debug.Log("Rotation CANPLACE: " + rotation);
+        return true;
 
     }
 
-    private void InitializeRoom(int x, int y, string type) //TODO: determine room type and connections
+    private bool gambling(int rate)
     {
+        int roll = r.Next(0, 100);
+        return roll < rate;
+    }
+
+    private void InitializeRoom(int x, int y, string type, int rotation) //TODO: determine room type and connections
+    {
+        Debug.Log("Rotation INITROOM: " + rotation);
         Vector3 chamberLocation = Vector3.zero;
         Quaternion chamberRotation = Quaternion.identity;
         GameObject chamberType = null;
@@ -121,13 +127,28 @@ public class RoomManager : MonoBehaviour
         if (type == "Large")
         {
             chamberLocation = new Vector3(x * separationDistance, 0, y * separationDistance);
-            chamberRotation = Quaternion.Euler(0, roomRotation, 0);
+            chamberRotation = Quaternion.Euler(0, rotation + 90, 0);
             chamberType = largeChambers[r.Next(largeChambers.Length)];
 
-            if (roomRotation == 0) occupied[x, y + 1] = true;
-            else if (roomRotation == 90) occupied[x - 1, y] = true;
-            else if (roomRotation == 180) occupied[x, y - 1] = true;
-            else if (roomRotation == 270) occupied[x + 1, y] = true;
+            switch (rotation)
+            {
+                case 0:
+                    occupied[x, y - 1] = true;
+                    chamberLocation.z -= 100;
+                    break;
+                case 90:
+                    occupied[x + 1, y] = true; 
+                    chamberLocation.x += 100;
+                    break;
+                case 180:
+                    occupied[x, y + 1] = true; 
+                    chamberLocation.z += 100;
+                    break;
+                case 270:
+                    occupied[x - 1, y] = true; 
+                    chamberLocation.x -= 100;
+                    break;
+            }
             
         }
         else if (type == "Small ")
@@ -148,6 +169,32 @@ public class RoomManager : MonoBehaviour
         room.transform.SetParent(transform);
     }
 
+    private void OnDrawGizmos()
+    {
+        if (occupied == null) return;
+
+        for (int x = 0; x < MAP_SIZE; x++)
+        {
+            for (int y = 0; y < MAP_SIZE; y++)
+            {
+                Vector3 worldPos = new Vector3(x * separationDistance, 0, y * separationDistance);
+
+                // Color occupied vs empty
+                Gizmos.color = occupied[x, y] ? new Color(1, 0, 0, 0.25f) : new Color(0, 1, 0, 0.25f);
+
+                // Draw a semi-transparent cube for each cell
+                Gizmos.DrawCube(worldPos + Vector3.up * 0.1f, new Vector3(separationDistance * 0.9f, 0.1f, separationDistance * 0.9f));
+
+                // Highlight the origin (0,0) with a unique color
+                if (x == 0 && y == 0)
+                {
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawWireCube(worldPos + Vector3.up * 0.2f, new Vector3(separationDistance, 0.2f, separationDistance));
+                }
+            }
+        }
+    }
+
     private class Chamber
     {
         public Vector3 Location { get; set; }
@@ -157,6 +204,7 @@ public class RoomManager : MonoBehaviour
         public Chamber(Vector3 location, Quaternion rotation, GameObject prefab)
         {
             Location = location;
+            Rotation = rotation;
             Prefab = prefab;
         }
     }
