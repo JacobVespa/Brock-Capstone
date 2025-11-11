@@ -8,10 +8,15 @@ public class InteractorScript : MonoBehaviour
     [Header("Interaction Settings")]
     public Transform InteractorSource;
     public float InteractRange;
+    public PlayerController playerController;
 
     [Header("Input Actions")]
     [SerializeField] private InputActionAsset inputActions;
 
+    private void Awake()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
     /*
     private InputAction interactAction;
 
@@ -45,7 +50,7 @@ public class InteractorScript : MonoBehaviour
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
             {
-                interactObj.Interact();
+                interactObj.Interact(playerController);
             }
         }
     }

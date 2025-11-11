@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class RigMovement : MonoBehaviour, IInteractable
+public class RigMovement : MonoBehaviour
 {
     public GameObject player;
     public GameObject pilotSeat;
@@ -29,23 +29,23 @@ public class RigMovement : MonoBehaviour, IInteractable
         
     }
 
-    public void Interact()
-    {
-        //Set Players Transform to Pilot Seat Transform
-        player.transform.position = pilotSeat.transform.position; 
-        //Debug.Log("Here");
-
-        //UI Transition?
-
-        //Movement Controls
-        //Get rigidbody of the ship 
-        //AddForce to the Rig as neccesary
-
-        //trying to figure out how to use the new input system with this
-
-
-        
- 
-    }
+  // public void Interact()
+  // {
+  //     //Set Players Transform to Pilot Seat Transform
+  //     player.transform.position = pilotSeat.transform.position; 
+  //     //Debug.Log("Here");
+  //
+  //     //UI Transition?
+  //
+  //     //Movement Controls
+  //     //Get rigidbody of the ship 
+  //     //AddForce to the Rig as neccesary
+  //
+  //     //trying to figure out how to use the new input system with this
+  //
+  //
+  //     
+  //
+  // }
 
 }
