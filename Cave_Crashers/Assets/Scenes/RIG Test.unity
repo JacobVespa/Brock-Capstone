@@ -283,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 5727896577378393226, guid: 011acb8002255fe4ab2c815f8cdf6cc4, type: 3}
       propertyPath: InteractorSource
       value: 
-      objectReference: {fileID: 2100066444}
+      objectReference: {fileID: 1829308947}
     - target: {fileID: 7886293584276814174, guid: 011acb8002255fe4ab2c815f8cdf6cc4, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.4
@@ -598,11 +598,9 @@ MonoBehaviour:
   inUse: 0
   stationSeat: {fileID: 0}
   player: {fileID: 0}
-  playerController: {fileID: 0}
   characterController: {fileID: 0}
   seatTransform: {fileID: 0}
   exitTransform: {fileID: 0}
-  originalParent: {fileID: 0}
 --- !u!65 &1444224523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -825,11 +823,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!4 &2100066444 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7886293584276814174, guid: 011acb8002255fe4ab2c815f8cdf6cc4, type: 3}
-  m_PrefabInstance: {fileID: 690636385}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
