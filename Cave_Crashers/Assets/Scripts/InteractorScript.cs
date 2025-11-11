@@ -2,10 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-interface IInteractable
-{
-    public void Interact();
-}
+
 public class InteractorScript : MonoBehaviour
 {
     [Header("Interaction Settings")]
@@ -15,6 +12,7 @@ public class InteractorScript : MonoBehaviour
     [Header("Input Actions")]
     [SerializeField] private InputActionAsset inputActions;
 
+    /*
     private InputAction interactAction;
 
     private void OnEnable()
@@ -39,7 +37,8 @@ public class InteractorScript : MonoBehaviour
             OnInteract();
         }
     }
-    private void OnInteract()
+    */
+    public void OnInteract()
     {
         Ray r = new Ray(InteractorSource.position, InteractorSource.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, InteractRange))
